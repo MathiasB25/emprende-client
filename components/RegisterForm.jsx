@@ -3,7 +3,7 @@ import { useState } from "react"
 import useFormInput from "../hooks/useFormInput"
 import useFormLabel from "../hooks/useFormLabel"
 
-const Register = () => {
+const RegisterForm = () => {
 
   const [ name, setName ] = useState('');
   const [ mail, setMail ] = useState('');
@@ -22,25 +22,16 @@ const Register = () => {
 
   return(
     <div className="">
-      <div className="w-full flex justify-between border-b border-solid border-gray-300">
-        <div className="h-20 cursor-pointer inline-flex items-center">
-            <Link href={'/'}><img className="navbar-logosize" src="/img/icon.png" alt="logo"/></Link>
-        </div>
-        <div className="h-20 cursor-pointer inline-flex items-center">
-            <Link href={'/'}><span className="hover:underline">Support</span></Link>
-        </div>
-      </div>
-
       <div>
         <div className="w-full mt-auto box-border mr-auto block">
-          <div className="box-border flex flex-row space-between">
+          <div className="box-border flex flex-row space-between fit-box">
             <div>
               <Link href={'/'}><img className="" src="/img/illustration_login.png" alt="logo"/></Link>
             </div>
             <div className="box-register">
               <div>
                 <p className="m-0 font-barlow font-bold mb-4 text-4xl">Crea tu usuario</p>
-                <p className="m-0 text-sm font-light text-main-text">Ya tienes una cuenta? <Link href={'/'}> <span className="m-0 font-semibold text-main-color hover:text-main-colordark"> Login </span> </Link></p>
+                <p className="m-0 text-sm font-light text-main-text">Ya tienes una cuenta? <Link href={'/login'}> <span className="m-0 font-semibold text-main-color hover:text-main-colordark"> Login </span> </Link></p>
               </div>
               <div className="flex flex-col mt-1 text-main-text">
                 <form action="" className="flex flex-col gap-3" onSubmit={e => handleSubmit(e)}>
@@ -76,4 +67,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default RegisterForm

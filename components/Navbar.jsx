@@ -15,9 +15,8 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="relative flex items-center">
-         <div className="w-full flex justify-between border-b border-solid border-gray-300">
-
+      <div className="relative flex items-center px-20 border-b border-solid border-gray-300">
+         <div className="w-full flex justify-between">
             <div className="flex">
                <div className="h-20 cursor-pointer inline-flex items-center">
                      <Link href={'/'}><img className="navbar-logosize" src="/img/icon.png" alt="logo"/></Link>
@@ -38,7 +37,7 @@ const Navbar = () => {
                      <button><i className="fa-solid fa-bars"></i></button>
                   </div>
                   <div>
-                     <Link href="/"><p className="navbar-joinusbuy border border-solid border-main-text hover:bg-main-text hover:text-white">Join Us</p></Link>
+                     <Link href="/login"><p className="navbar-joinusbuy border border-solid border-main-text hover:bg-main-text hover:text-white">Unite</p></Link>
                   </div>  
                   <div>
                      <Link href="/"><p className="navbar-joinusbuy text-white bg-main-color hover:bg-main-colordark transition-colors">Buy Now</p></Link>
