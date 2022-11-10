@@ -46,6 +46,8 @@
     border-radius: 15px;
     outline: none;
     background-color: transparent !important;
+    font-size: 13px;
+    transition: all .2s;
 }
 
 .input-div {
@@ -115,7 +117,6 @@
     padding: 32px;
     border-radius: 16px;
     box-shadow: -24px 24px 72px -8px rgb(145 158 171 / 24%);
-<<<<<<< Updated upstream
     height: fit-content;
 }
 
@@ -153,6 +154,4 @@
 
 .fit-box:first-child{
   height: fit-content;
-=======
->>>>>>> Stashed changes
 }

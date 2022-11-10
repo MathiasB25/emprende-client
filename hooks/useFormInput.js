@@ -2,14 +2,19 @@ import { useEffect } from "react"
 
 const useFormInput = (element) => {
     element = element?.target;
-
+    if(element?.classList.value == '') {
+        element = element?.parentElement.parentElement;
+    }
+    if(element && element?.classList[0] == 'label' || element?.classList[0] == 'null') {
+        element = element?.parentElement;
+    }
     useEffect(() => {
         function handleClickOutside(event) {
             let evt = event.target?.parentElement;
             if(evt.classList[0] == 'label') {
                 evt = evt.parentElement;
             }
-            if(evt?.classList[0] === 'input-label') {
+            if(evt?.classList[0] === 'input-div') {
                 let div = evt;
                 let label = evt?.children[0];
 
@@ -28,9 +33,6 @@ const useFormInput = (element) => {
                     label.style.fontSize = '10px'
                     label.style.color = 'var(--main-color)'
                 }, 180)
-            }
-            if(element?.classList[0] != 'input-label') {
-                element = element?.parentElement;
             }
             if(element && !element?.contains(event.target) && element?.style.backgroundColor != 'rgb(247, 247, 248)') {
                 let div = element;

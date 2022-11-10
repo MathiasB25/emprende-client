@@ -18,11 +18,6 @@ const RegisterForm = () => {
     }
   }
 
-  /* const [ element, setElement ] = useState(null);
-  const [ input, setInput ] = useState(null);
-  useFormInput(element)
-  useFormLabel(input) */
-
   return(
     <div className="">
       <div>
@@ -41,7 +36,7 @@ const RegisterForm = () => {
                   <Input props={{
                       id: "name",
                       label: "Nombre completo",
-                      labelType: "text",
+                      inputType: "text",
                       value: name,
                       setter: setName
                     }}
@@ -49,7 +44,7 @@ const RegisterForm = () => {
                   <Input props={{
                       id: "email",
                       label: "Correo eletrónico",
-                      labelType: "email",
+                      inputType: "email",
                       value: email,
                       setter: setEmail
                     }}
@@ -57,7 +52,7 @@ const RegisterForm = () => {
                   <Input props={{
                       id: "pass1",
                       label: "Contraseña",
-                      labelType: "password",
+                      inputType: "password",
                       value: pass1,
                       setter: setPass1
                     }}
@@ -65,7 +60,7 @@ const RegisterForm = () => {
                   <Input props={{
                       id: "pass2",
                       label: "Confirmar contraseña",
-                      labelType: "password",
+                      inputType: "password",
                       value: pass2,
                       setter: setPass2
                     }}
