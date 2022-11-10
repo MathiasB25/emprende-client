@@ -1,24 +1,27 @@
 import Link from "next/link"
 import { useState } from "react"
+import Input from "./Input"
 import useFormInput from "../hooks/useFormInput"
 import useFormLabel from "../hooks/useFormLabel"
 
 const RegisterForm = () => {
 
   const [ name, setName ] = useState('');
-  const [ mail, setMail ] = useState('');
+  const [ email, setEmail ] = useState('');
   const [ pass1, setPass1 ] = useState('');
   const [ pass2, setPass2 ] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if([name, mail, pass1, pass2].includes('')) {
+    if([name, email, pass1, pass2].includes('')) {
       console.log('Campos vacios');
     }
   }
 
-  const [ element, setElement ] = useState(null);
+  /* const [ element, setElement ] = useState(null);
+  const [ input, setInput ] = useState(null);
   useFormInput(element)
+  useFormLabel(input) */
 
   return(
     <div className="">
@@ -26,7 +29,7 @@ const RegisterForm = () => {
         <div className="w-full mt-auto box-border mr-auto block">
           <div className="box-border flex flex-row space-between fit-box">
             <div>
-              <Link href={'/'}><img className="" src="/img/illustration_login.png" alt="logo"/></Link>
+              <img className="" src="/img/illustration_login.png" alt="logo"/>
             </div>
             <div className="box-register">
               <div>
@@ -35,22 +38,38 @@ const RegisterForm = () => {
               </div>
               <div className="flex flex-col mt-1 text-main-text">
                 <form action="" className="flex flex-col gap-3" onSubmit={e => handleSubmit(e)}>
-                  <div className="input-label relative input-div" onClick={e => setElement(e)}>
-                    <label className="label" htmlFor="name">Nombre Completo</label>
-                    <input className="input" type="text" name="name" id="name" onChange={e => setName(e.target.value)} value={name} />
-                  </div>
-                  <div className="input-label relative input-div" onClick={e => setElement(e)}>
-                    <label className="label" htmlFor="mail">Correo</label>
-                    <input className="input" type="mail" name="mail" id="mail" onChange={e => setMail(e.target.value)} value={mail} />
-                  </div>
-                  <div className="input-label relative input-div" onClick={e => setElement(e)}>
-                    <label className="label" htmlFor="pass1">Contraseña</label>
-                    <input className="input" type="password" name="pass1" id="pass1" onChange={e => setPass1(e.target.value)} value={pass1} />
-                  </div>
-                  <div className="input-label relative input-div" onClick={e => setElement(e)}>
-                    <label className="label" htmlFor="pass2">Confirmar Contraseña</label>
-                    <input className="input" type="password" name="pass2" id="pass2" onChange={e => setPass2(e.target.value)} value={pass2} />
-                  </div>
+                  <Input props={{
+                      id: "name",
+                      label: "Nombre completo",
+                      labelType: "text",
+                      value: name,
+                      setter: setName
+                    }}
+                  />
+                  <Input props={{
+                      id: "email",
+                      label: "Correo eletrónico",
+                      labelType: "email",
+                      value: email,
+                      setter: setEmail
+                    }}
+                  />
+                  <Input props={{
+                      id: "pass1",
+                      label: "Contraseña",
+                      labelType: "password",
+                      value: pass1,
+                      setter: setPass1
+                    }}
+                  />
+                  <Input props={{
+                      id: "pass2",
+                      label: "Confirmar contraseña",
+                      labelType: "password",
+                      value: pass2,
+                      setter: setPass2
+                    }}
+                  />
                   <button className="cursor-pointer font-semibold text-base py-2 mt-6 px-6 rounded-lg text-white bg-main-color w-full h-12 mb-4 hover:bg-main-colordark transition-colors">Register</button>
                   <div>
                     <span className="m-0 text-xs font-light text-main-text text-center">Acepto los <Link href={'/'}><span className="hover:underline font-normal">Términos de servicio</span></Link> y la <Link href={'/'}><span className="hover:underline font-normal">Política de privacidad.</span></Link></span>

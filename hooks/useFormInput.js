@@ -6,20 +6,15 @@ const useFormInput = (element) => {
     useEffect(() => {
         function handleClickOutside(event) {
             let evt = event.target?.parentElement;
-            if(event.target.classList[0] === 'input-label') {
-                evt = event.target;
+            if(evt.classList[0] == 'label') {
+                evt = evt.parentElement;
             }
             if(evt?.classList[0] === 'input-label') {
                 let div = evt;
                 let label = evt?.children[0];
-                let input = evt?.children[1];
 
-                if(label.children?.length !== 0) {
-                    label = label.children[0]
-                }
-            
-                if(input.children?.length !== 0) {
-                    input = input.children[1]
+                if(label.classList[0] != 'label') {
+                    label = label.parentElement;
                 }
                 
                 label.style.animationName = 'labelActive'
@@ -29,7 +24,7 @@ const useFormInput = (element) => {
                 div.style.backgroundColor = 'rgba(145, 158, 171, 0.24)'
             
                 setTimeout( () => {
-                    label.style.top = '30%'
+                    label.style.height = '70%'
                     label.style.fontSize = '10px'
                     label.style.color = 'var(--main-color)'
                 }, 180)
@@ -37,26 +32,21 @@ const useFormInput = (element) => {
             if(element?.classList[0] != 'input-label') {
                 element = element?.parentElement;
             }
-            if(element && !element?.contains(event.target)) {
+            if(element && !element?.contains(event.target) && element?.style.backgroundColor != 'rgb(247, 247, 248)') {
                 let div = element;
                 let label = element?.children[0];
-                let input = element?.children[1];
-
-                if(label.children?.length !== 0) {
-                    label = label.children[0]
-                }
-            
-                if(input.children?.length !== 0) {
-                    input = input.children[1]
-                }
                 
+                if(label.classList[0] != 'label') {
+                    label = label.parentElement;
+                }
+
                 label.style.animationName = 'labelInactive'
                 label.style.animationDuration = '0.2s'
                 label.style.animationTimingFunction = 'ease-in-out'
             
-                div.style.backgroundColor = '#f7f7f8'
+                div.style.backgroundColor = 'rgb(247, 247, 248)'
                 setTimeout( () => {
-                    label.style.top = '50%'
+                    label.style.height = '100%'
                     label.style.fontSize = '13px'
                     label.style.color = 'var(--main-text)'
                     label.style.animationName = ''
