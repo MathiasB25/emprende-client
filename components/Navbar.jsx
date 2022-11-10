@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="relative flex items-center px-20 border-b border-solid border-gray-300">
+      <div className="relative flex items-center px-20 shadow-md">
          <div className="w-full flex justify-between">
             <div className="flex">
                <div className="h-20 cursor-pointer inline-flex items-center">
