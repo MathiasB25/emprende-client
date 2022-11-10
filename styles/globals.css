@@ -19,20 +19,52 @@
     font-family: 'Barlow', sans-serif;
 }
 
-.label{
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
+.label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
     font-size: 13px;
+    cursor: text;
+    border-radius: 15px;
 }
+
+.label p {
+    width: fit-content;
+    height: fit-content;
+}
+
+.input {
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    height: 15px;
+    display: block;
+    border-radius: 15px;
+    outline: none;
+    background-color: transparent !important;
+    font-size: 13px;
+    transition: all .2s;
+}
+
+.input-div {
+    background-color: #f7f7f8;
+    border-radius: 15px;
+    width: 100%;
+    height: 50px;
+    transition: background .3s;
+}
+
 @keyframes labelActive {
     from{
-        top: 50%;
+        height: 100%;
         font-size: 13px;
     } 
     to{
-        top: 30%;
+        height: 70%;
         font-size: 10px;
         color: var(--main-color);
     }
@@ -40,20 +72,20 @@
 
 @keyframes labelInactive {
     from{
-        top: 30%;
+        height: 70%;
         font-size: 10px;
         color: var(--main-color);
     } 
     to{
-        top: 50%;
+        height: 100%;
         font-size: 13px;
     }
 }
 
 
-/* NAVBAR */
-/* NAVBAR */
-/* NAVBAR */
+/* -------------------------------Nav Bar------------------------------- */
+/* -------------------------------Nav Bar------------------------------- */
+/* -------------------------------Nav Bar------------------------------- */
 
 .navbar-logosize{
     width: 150px;
@@ -75,32 +107,52 @@
     background-color: rgba(255, 255, 255, 0.52);
 }
 
-/* Register */
+/* -------------------------------Register------------------------------- */
+/* -------------------------------Register------------------------------- */
+/* -------------------------------Register------------------------------- */
 
 .box-register{
     display: flex;
+    min-width: 360px;
     flex-direction: column;
     padding: 32px;
     border-radius: 16px;
     box-shadow: -24px 24px 72px -8px rgb(145 158 171 / 24%);
+    height: fit-content;
 }
 
-.register-input{
-    padding: 4px 0 5px;
-    box-sizing: content-box;
+.input {
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
     height: 15px;
     display: block;
-    width: 90%;
-    padding-top: 25px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-left: 14px;
-    background-color: #f7f7f8;
     border-radius: 15px;
     outline: none;
+    background-color: transparent !important;
+}
+
+.input-div {
+    background-color: #f7f7f8;
+    border-radius: 15px;
+    width: 100%;
+    height: 50px;
     transition: background .3s;
 }
 
 
+/* -------------------------------Create user------------------------------- */
+/* -------------------------------Create user------------------------------- */
+/* -------------------------------Create user------------------------------- */
 
+.fit-box{
+    height: calc(100vh - 81px) !important;
+    display: flex;
+    align-items: center;
+}
 
+.fit-box:first-child{
+  height: fit-content;
+}

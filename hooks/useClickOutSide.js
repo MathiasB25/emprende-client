@@ -1,11 +1,11 @@
 import { useEffect } from "react"
+import useFormInput from "./useFormInput";
 
 const useClickOutSide = (ref, toogle) =>{
   useEffect(() => {
     function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
+      if (ref?.current && !ref?.current.contains(event.target)) {
         toogle(false);
-        console.log('click')
       }
     }
     document.addEventListener("mousedown", handleClickOutside);

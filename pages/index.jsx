@@ -1,10 +1,9 @@
-import Navbar from "../components/Navbar"
-import Register from "../components/Register"
+import Layout from "../components/Layout"
 
 export default function Home() {
   return (
-    <div className="px-20 xl:px-44 2xl:px-80 ">
-      <Register/>
-    </div>
+    <Layout>
+        <div>En desarrollo pa</div>
+    </Layout>
   )
 }
