@@ -1,8 +1,6 @@
 import Link from "next/link"
 import { useState } from "react"
 import Input from "./Input"
-import useFormInput from "../hooks/useFormInput"
-import useFormLabel from "../hooks/useFormLabel"
 
 const RegisterForm = () => {
 
@@ -21,10 +19,10 @@ const RegisterForm = () => {
   return(
     <div className="">
       <div>
-        <div className="w-full mt-auto box-border mr-auto block">
+        <div className="w-fit mx-auto box-border mr-auto block">
           <div className="box-border flex flex-row space-between fit-box">
-            <div>
-              <img className="" src="/img/illustration_login.png" alt="logo"/>
+            <div className="hidden md:block">
+              <img className="h-fit" src="/img/illustration_login.png" alt="logo"/>
             </div>
             <div className="box-register">
               <div>
