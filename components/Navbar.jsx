@@ -22,9 +22,9 @@ const Navbar = () => {
                      <Link href={'/'}><img className="navbar-logosize" src="/img/icon.png" alt="logo"/></Link>
                </div>
                <div className="flex gap-12 items-center flex-row ml-12 text-gray-500 ">
-                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color"> Components </p></Link>
-                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color"> Pages </p></Link>
                      <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color"> Home </p></Link>
+                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color"> Pages </p></Link>
+                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color"> Components </p></Link>
                      <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color"> Documentation </p></Link>
                </div>
             </div>
