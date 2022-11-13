@@ -1,16 +1,31 @@
-import Link from "next/link"
-import { useState } from "react"
-import useFormInput from "../hooks/useFormInput"
-import Input from "./Input"
-
+import axios from "axios";
+import { useState } from "react";
+import Link from "next/link";
+import Input from "./Input";
+import useAuth from "../hooks/useAuth";
 
 const LoginForm = () => {
 
-  const [ email, setEmail ] = useState('');
-  const [ pass1, setPass1 ] = useState('');
+  const { setAuth } = useAuth();
 
-  const [ element, setElement ] = useState(null);
-  useFormInput(element)
+  const [ email, setEmail ] = useState('');
+  const [ pass, setPass ] = useState('');
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    if([email, pass].includes('')) {
+      console.log('Campos vacios');
+      return
+    }
+
+    try {
+      const { data } = await axios.post('/api/userLogin', { email, password: pass });
+      setAuth(data);
+      localStorage.setItem('WRkAxpZRq6Gv', data.token);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="">
@@ -38,8 +53,8 @@ const LoginForm = () => {
                       id: "pass1",
                       label: "Contraseña",
                       inputType: "password",
-                      value: pass1,
-                      setter: setPass1
+                      value: pass,
+                      setter: setPass
                     }}
                 />
                 <Link href={'/'}><span className="hover:underline text-xs font-light">¿Olvidaste tu Contraseña?</span></Link>

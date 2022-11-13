@@ -147,12 +147,77 @@
 /* -------------------------------Create user------------------------------- */
 /* -------------------------------Create user------------------------------- */
 
-.fit-box{
+.fit-box {
     height: calc(100vh - 81px) !important;
     display: flex;
     align-items: center;
 }
 
-.fit-box:first-child{
+.fit-box:first-child {
   height: fit-content;
+}
+
+.store-layout-height {
+    height: calc(100vh - 57px);
+}
+
+.store-layout-sidebar {
+    position: absolute;
+    display: block;
+    width: 250px;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: white;
+    animation-name: storeSidebarOpen;
+    animation-duration: .5s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes storeSidebarOpen {
+    from {
+        left: -400px;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes storeSidebarClose {
+    from {
+        left: 0;
+    }
+    to {
+        left: -400px;
+    }
+}
+
+.store-layout-opacity {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .2);
+    animation-name: storeOpacityOpen;
+    animation-duration: .5s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes storeOpacityOpen {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes storeOpacityClose {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
