@@ -27,7 +27,7 @@ const RegisterForm = () => {
             <div className="box-register">
               <div>
                 <p className="m-0 font-barlow font-bold mb-4 text-4xl">Crea tu usuario</p>
-                <p className="m-0 text-sm font-light text-main-text">Ya tienes una cuenta? <Link href={'/login'}> <span className="m-0 font-semibold text-main-color hover:text-main-colordark"> Login </span> </Link></p>
+                <p className="m-0 text-sm font-normal-weight text-main-text">Ya tienes una cuenta? <Link href={'/login'}> <span className="m-0 font-semibold text-main-color hover:text-main-colordark"> Login </span> </Link></p>
               </div>
               <div className="flex flex-col mt-1 text-main-text">
                 <form action="" className="flex flex-col gap-3" onSubmit={e => handleSubmit(e)}>
@@ -65,7 +65,7 @@ const RegisterForm = () => {
                   />
                   <button className="cursor-pointer font-semibold text-base py-2 mt-6 px-6 rounded-lg text-white bg-main-color w-full h-12 mb-4 hover:bg-main-colordark transition-colors">Register</button>
                   <div>
-                    <span className="m-0 text-xs font-light text-main-text text-center">Acepto los <Link href={'/'}><span className="hover:underline font-normal">Términos de servicio</span></Link> y la <Link href={'/'}><span className="hover:underline font-normal">Política de privacidad.</span></Link></span>
+                    <span className="m-0 text-xs font-normal-weight text-main-text text-center">Acepto los <Link href={'/'}><span className="hover:underline font-normal">Términos de servicio</span></Link> y la <Link href={'/'}><span className="hover:underline font-normal">Política de privacidad.</span></Link></span>
                   </div>
                 </form>
               </div>

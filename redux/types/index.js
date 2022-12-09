@@ -1,0 +1,36 @@
+// MYSTORE
+    export const CREATE_MY_STORE = 'CREATE_MY_STORE';
+    export const GET_MY_STORE = 'GET_MY_STORE';
+    export const GET_MY_STORE_SUCCESS = 'GET_MY_STORE_SUCCESS';
+    export const UPDATE_MY_STORE = 'UPDATE_MY_STORE';
+    export const UPDATE_MY_STORE_SUCCESS = 'UPDATE_MY_STORE_SUCCESS';
+    export const DELETE_MY_STORE = 'DELETE_MY_STORE';
+    export const MY_STORE_ERROR = 'MY_STORE_ERROR';
+    // TEMPLATES
+        export const SET_MY_STORE_TEMPLATE = 'SET_MY_STORE_TEMPLATE';
+        export const SET_MY_STORE_TEMPLATE_SUCCESS = 'SET_MY_STORE_TEMPLATE_SUCCESS';
+        export const MY_STORE_TEMPLATE_ERROR = 'MY_STORE_TEMPLATE_ERROR';
+
+// STORE
+    export const GET_STORE = 'GET_STORE';
+    export const GET_STORE_SUCCESS = 'GET_STORE_SUCCESS';
+    export const STORE_ERROR = 'STORE_ERROR';
+    // PRODUCTS
+        export const GET_STORE_PRODUCTS = 'GET_STORE_PRODUCTS';
+        export const GET_STORE_PRODUCTS_SUCCESS = 'GET_STORE_PRODUCTS_SUCCESS';
+        export const GET_STORE_PRODUCTS_ERROR = 'GET_STORE_PRODUCTS_ERROR';
+    // COLLECTIONS
+        export const GET_STORE_COLLECTIONS = 'GET_STORE_COLLECTIONS';
+        export const GET_STORE_COLLECTIONS_SUCCESS = 'GET_STORE_COLLECTIONS_SUCCESS';
+        export const GET_STORE_COLLECTIONS_ERROR = 'GET_STORE_COLLECTIONS_ERROR';
+// AUTH
+    export const GET_AUTH = 'GET_AUTH';
+    export const GET_AUTH_SUCCESS = 'GET_AUTH_SUCCESS';
+    export const SET_AUTH = 'SET_AUTH';
+    export const SET_AUTH_SUCCESS = 'SET_AUTH_SUCCESS';
+    export const UPDATE_AUTH = 'UPDATE_AUTH';
+    export const UPDATE_AUTH_SUCCESS = 'UPDATE_AUTH_SUCCESS';
+    export const DELETE_AUTH = 'DELETE_AUTH';
+    export const AUTH_ERROR = 'AUTH_ERROR';
+// LOGOUT
+    export const LOGOUT = 'LOGOUT';
