@@ -1,18 +1,15 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-    const { template, config } = req.body;
-    
+    const { store } = req.query;
+
     try {
         const { data } =  await axios.request({
-            method: 'POST',
-            url: `${process.env.SERVER_URL}/myStore/template/add`,
+            method: 'GET',
+            url: `${process.env.SERVER_URL}/myStore/products/${store}`,
             headers: {
                 'Authorization': config.headers.Authorization
-            },
-            data: {
-                template
-            },
+            }
         })
         return res.status(200).json(data);
     } catch (error) {

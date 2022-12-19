@@ -37,7 +37,7 @@ export default function StoreLayoutSidebar({store, title}) {
 
     return(
         <>
-            <div className={`${active && 'hidden'} shadow-sm flex lg:hidden cursor-pointer items-center justify-center rounded-full absolute top-20 left-3 w-8 h-8 bg-main-color text-white hover:bg-main-colordark transition-colors`} onClick={() => setActive(true)}><i className="fa-regular fa-arrow-right-from-line"></i></div>
+            <div className={`${active && 'hidden'} shadow-sm flex lg:hidden cursor-pointer items-center justify-center rounded-full absolute top-20 left-3 w-8 h-8 bg-main-color text-white hover:bg-main-colordark transition-colors z-20`} onClick={() => setActive(true)}><i className="fa-regular fa-arrow-right-from-line"></i></div>
             <div ref={sidebar} className={`${active && 'store-layout-sidebar'} relative hidden lg:block lg:w-1/4 xl:w-1/5 2xl:w-1/6 h-full border-r border-gray-100 shadow-sm`}>
             <div className={`${!active && 'hidden'} shadow-sm flex lg:hidden cursor-pointer items-center justify-center rounded-full absolute top-4 right-5 transition-colors z-10 text-xl`} onClick={handleClose}><i className="fa-regular fa-arrow-left-from-line"></i></div>
                 <div className={`relative flex flex-col gap-1 py-5 pt-14 lg:pt-5 h-full w-full`}>

@@ -20,63 +20,49 @@ import useAxiosConfig from '../../hooks/useAxiosConfig';
 function TemplatesTemplate({ state, actions }) {
     
     const router = useRouter();
+    const { template: templateId } = router.query;
 
     const myStore = state.myStore;
 
     const [ fetchSuccess, setFetchSuccess ] = useState(null)
     const [ template, setTemplate ] = useState({});
     const [ loading, setLoading ] = useState(true);
-    const [ loadingComponent, setLoadingComponent ] = useState(true);
     const [ otherTemplates, setOtherTemplates ] = useState([]);
     const [ isTemplateOwned, setIsTemplateOwned ] = useState(null);
     
     useEffect(() => {
         setLoading(true);
-        setLoadingComponent(true);
         ( async () => {
-            Promise.all([axios(`/api/getTemplate?template=${window.location.pathname.split('/')[2]}`), axios('/api/getTemplates')])
-                .then(data => {
-                    setTemplate(data[0].data.data || {}); 
-                    if(data[1].data) {
-                        const otherTemplates = data[1].data.filter( item => item.id !== window.location.pathname.split('/')[2])
-                        setOtherTemplates(otherTemplates || []);
-                    }
-                    setFetchSuccess(data[0].data.success);
-                    setLoading(false);
-                    setTimeout(() => {
-                        setLoadingComponent(false);
-                    }, 700)
-                })
+            if(templateId) {
+                const { data } = await axios('/api/getTemplates');
+                const template = data.filter( item => item.id === templateId );
+                setTemplate(template[0]);
+
+                const otherTemplates = data.filter( item => item.id !== templateId )
+                setOtherTemplates(otherTemplates || []);
+
+                setFetchSuccess(template[0]._id ? true : false);
+                setLoading(false);
+            }
         }) ();
-    }, [router.asPath])
+    }, [templateId])
     
     const handleSetTemplate = async () => {
         if(myStore.template?._id === template._id) {
             return
         }
 
-        const config = useAxiosConfig();
-        try {
-            actions.setTemplate(template, config);
-        } catch (error) {
-            console.log(error);
-        }
+        actions.setTemplate({template});
     }
 
     const handleAddTemplate = async () => {
-        if(template.price === 0) {
-            const config = useAxiosConfig();
-            try {
-                await axios.post('/api/AddTemplate', { template: template._id, config });
-                myStore.ownedTemplates.push(template);
-                setMyStore(myStore);
-            } catch (error) {
-                console.log(error);
-            }
-        }
+        if(template.price !== 0 || !myStore.url) return
+
+        actions.addTemplate({template});
     }
 
     useEffect(() => {
+        setIsTemplateOwned(false);
         myStore.ownedTemplates?.map(item => {
             item._id === template._id && setIsTemplateOwned(true);
         });
@@ -84,7 +70,7 @@ function TemplatesTemplate({ state, actions }) {
 
     return(
         <>
-            {loadingComponent && <Loading />}
+            <Loading loading={loading} />
             {fetchSuccess && (
                 <div>
                     <Head>
@@ -117,7 +103,7 @@ function TemplatesTemplate({ state, actions }) {
                                             !isTemplateOwned && template.price ? (
                                                 <div className='text-sm sm:text-base cursor-pointer bg-main-color hover:bg-main-colordark transition-colors text-white rounded-md py-2 px-3 md:py-3 md:px-5 whitespace-nowrap'>Comprar plantilla</div>
                                             ) : (
-                                                <div className='text-sm sm:text-base cursor-pointer bg-main-color hover:bg-main-colordark transition-colors text-white rounded-md py-2 px-3 md:py-3 md:px-5 whitespace-nowrap' onClick={handleAddTemplate}>Agregar a plantillas</div>
+                                                <div className={`${!myStore.url ? 'bg-main-color opacity-60 cursor-no-drop' : 'bg-main-color hover:bg-main-colordark'} text-sm sm:text-base cursor-pointer transition-colors text-white rounded-md py-2 px-3 md:py-3 md:px-5 whitespace-nowrap`} onClick={handleAddTemplate}>Agregar a plantillas</div>
                                             )
                                         )}
                                         <div className='text-sm sm:text-base flex items-center justify-between cursor-pointer border-2 border-main-colordark text-main-colordark hover:bg-main-color rounded-md py-2 px-3 md:py-3 md:px-5 whitespace-nowrap font-normal hover:text-white transition-colors'><div>Previsualizar</div></div>

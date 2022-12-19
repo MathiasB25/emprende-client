@@ -1,3 +1,4 @@
+import randomId from '../../../../hooks/randomId';
 import { HeadingH2, Product } from '../elements';
 
 export default function FeaturedCollectionSection({elements}) {
@@ -13,7 +14,7 @@ export default function FeaturedCollectionSection({elements}) {
             <div className='grid-cols-4-media'>
                 {collection.length != 0 ? (
                     collection.map(product => (
-                        <div><Product name={product.value.name} price={product.value.price} media={product.value.media} aspectRatio={product.value.properties.aspectRatio} /></div>
+                        <div key={randomId()}><Product name={product.value.name} price={product.value.price} media={product.value.media} aspectRatio={product.value.properties.aspectRatio} /></div>
                     ))
                 ) : (
                     <>

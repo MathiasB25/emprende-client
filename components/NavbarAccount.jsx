@@ -48,7 +48,7 @@ function NavbarAccount({state, actions, top}) {
                             <Link href={`#`}><div>Mi Cuenta</div></Link>
                         </div>
                         <div className="py-2 px-3 bg-transparent hover:bg-gray-100 transition-colors text-center cursor-pointer rounded-md">
-                            <Link href={`/store/${myStore.url}/admin`}><div>Mi Tienda</div></Link>
+                            <Link href={myStore.url ? `/store/${myStore.url}/admin` : '/store/create'}><div>Mi Tienda</div></Link>
                         </div>
                         <div className="py-2 px-3 bg-transparent hover:bg-red-400 hover:text-white transition-colors text-center cursor-pointer rounded-md" onClick={handleLogout}>
                             <div>Cerrar sesión</div>

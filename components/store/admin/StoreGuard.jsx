@@ -11,7 +11,7 @@ import * as Actions from '../../../redux/actions'
 // Components
 import Loading from "../../Loading";
 
-function StoreGuard({ state, actions, children }) {
+function StoreGuard({ state, actions, children, loading }) {
 
     const router = useRouter();
     const { store: storeQuery } = router.query;
@@ -29,7 +29,7 @@ function StoreGuard({ state, actions, children }) {
 
     return(
         <>
-            <Loading loading={fetchLoading} />
+            <Loading loading={loading ? loading : fetchLoading} />
             {auth.authenticated && Object.keys(myStore).length != 0 && storeQuery === myStore.url && (
                 <div>{children}</div>
             )}
@@ -43,9 +43,9 @@ function StoreGuard({ state, actions, children }) {
                         </div>
                     </div>
                     <div className="w-fit">
-                        <Link href={ Object.keys(myStore).length !== 0 ? `/store/${myStore.url}` : '/store/create'}>
+                        <Link href={ myStore.url ? `/store/${myStore.url}/admin` : '/store/create'}>
                             <div className="w-fit px-10 py-4 bg-main-color hover:bg-main-colordark transition-colors text-white cursor-pointer font-normal-weight rounded-md">
-                                <div>{ Object.keys(myStore).length !== 0 ? 'Ir a mi Tienda' : 'Crear mi tienda'}</div>
+                                <div>{ myStore.url ? 'Ir a mi Tienda' : 'Crear mi tienda'}</div>
                             </div>
                         </Link>
                     </div>

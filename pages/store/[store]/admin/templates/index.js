@@ -47,9 +47,9 @@ function StoreThemes({ state, actions }) {
                                 </div>
                             </div>
                         ) : (
-                            <div className="flex items-center justify-between border border-gray-100 shadow-md py-5 px-6 rounded-md">
-                                <div className="flex items-center gap-3">
-                                    <div className="text-3xl">
+                            <div className="flex flex-col sm:flex-row items-center justify-between border border-gray-100 shadow-md py-5 px-6 rounded-md">
+                                <div className="flex items-center gap-3 sm:pr-5 text-center sm:text-left">
+                                    <div className="text-3xl hidden sm:block">
                                         <i className="fa-regular fa-pen-circle"></i>
                                     </div>
                                     <div className="flex flex-col gap-1">
@@ -57,7 +57,7 @@ function StoreThemes({ state, actions }) {
                                         <div className="font-light text-sm text-gray-500">Explora las plantillas que tenemos para ofrecerte y empieza a darle color a tu ecommerce</div>
                                     </div>
                                 </div>
-                                <Link href="/templates"><button className="text-main-color hover:text-main-colordark font-light hover:underline transition-colors">Plantillas</button></Link>
+                                <Link href="/templates"><button className="text-main-color hover:text-main-colordark font-light hover:underline transition-colors pt-5 sm:p-0">Plantillas</button></Link>
                             </div>
                         )}
                     </div>
@@ -66,9 +66,17 @@ function StoreThemes({ state, actions }) {
                             <div className="text-2xl">Tus plantillas</div>
                             <Link href="/templates"><button className="font-light text-main-color hover:text-main-colordark transition-colors hover:underline">Ir a tienda</button></Link>
                         </div>
+                        { myStore.ownedTemplates?.length === 0 && (
+                            <div className="flex flex-col gap-5 items-center py-20">
+                                <div className="font-light text-lg">No has agregado plantillas.</div>
+                                <Link href="/templates">
+                                    <button className="bg-main-color hover:bg-main-colordark transition-colors text-white rounded-md font-light px-5 py-3">Buscar plantillas</button>
+                                </Link>
+                            </div>
+                        ) }
                         {myStore.ownedTemplates && (
                             <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5">
-                                {myStore.ownedTemplates.map( template => (
+                                {myStore.ownedTemplates?.map( template => (
                                     <TemplateGridItem key={template.id} template={template} />
                                 ))}
                             </div>

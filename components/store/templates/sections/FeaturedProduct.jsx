@@ -1,3 +1,4 @@
+import randomId from '../../../../hooks/randomId';
 import { HeadingH2, Price, QuantitySelector, BuyButton } from '../elements';
 
 export default function FeaturedProductSection({elements}) {
@@ -7,13 +8,13 @@ export default function FeaturedProductSection({elements}) {
             { elements.map(e => {
                 switch (e.component) {
                     case "HeadingH2":
-                        return <HeadingH2 text={e.value.text} />; 
+                        return <HeadingH2 key={randomId()} text={e.value.text} />; 
                     case "Price":
-                        return <Price price={e.value.price.price} stock={e.value.price.stock} align={e.value.properties.align} />; 
+                        return <Price key={randomId()} price={e.value.price.price} stock={e.value.price.stock} align={e.value.properties.align} />; 
                     case "QuantitySelector":
-                        return <QuantitySelector align={"center"} />; 
+                        return <QuantitySelector key={randomId()} align={"center"} />; 
                     case "BuyButton":
-                        return <BuyButton text={e.value.text} color={e.value.color} bg={e.value.bg} width={e.value.width} />; 
+                        return <BuyButton key={randomId()} text={e.value.text} color={e.value.color} bg={e.value.bg} width={e.value.width} />; 
                 }
             })}
         </div>

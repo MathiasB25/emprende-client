@@ -1,3 +1,4 @@
+import randomId from '../../../../hooks/randomId';
 import { HeadingH2, Collection } from '../elements';
 
 export default function CollectionListSection({elements}) {
@@ -12,7 +13,7 @@ export default function CollectionListSection({elements}) {
             </div>
             <div className="grid-cols-3-media">
                 {collections.map(e => (
-                    <Collection name={e.value.name} media={e.value.media} aspectRatio={e.value.properties?.aspectRatio} />
+                    <Collection key={randomId()} name={e.value.name} media={e.value.media} aspectRatio={e.value.properties?.aspectRatio} />
                 ))}
             </div>
         </div>

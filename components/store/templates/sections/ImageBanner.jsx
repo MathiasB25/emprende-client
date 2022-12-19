@@ -1,3 +1,4 @@
+import randomId from '../../../../hooks/randomId';
 import { HeadingH2, Description, Button, Image } from '../elements';
 
 export default function ImageBannerSection({elements, height}) {
@@ -18,11 +19,11 @@ export default function ImageBannerSection({elements, height}) {
                 {bannerContent.map(e => {
                     switch (e.component) {
                         case "HeadingH2":
-                            return <div className='z-10'><HeadingH2 text={e.value.text || "Image banner"} color={e.value.properties?.color || "white"} weight={e.value.properties?.weight || "normal"} /></div>
+                            return <div key={randomId()} className='z-10'><HeadingH2 text={e.value.text || "Image banner"} color={e.value.properties?.color || "white"} weight={e.value.properties?.weight || "normal"} /></div>
                         case "Description":
-                            return <div className='z-10'><Description text={e.value.text || "Give customers details about the banner image(s) or content on the template."} color={e.value.properties?.color || "white"} /></div>
+                            return <div key={randomId()} className='z-10'><Description text={e.value.text || "Give customers details about the banner image(s) or content on the template."} color={e.value.properties?.color || "white"} /></div>
                         case "Button":
-                            return <div className='z-10'><Button text={e.value.text || "Shop all"} color={e.value.properties?.color || "white"} border={e.value.properties?.border} bg={e.value.properties?.bg} width={e.value.properties.width || "8rem"} /></div>
+                            return <div key={randomId()} className='z-10'><Button text={e.value.text || "Shop all"} color={e.value.properties?.color || "white"} border={e.value.properties?.border} bg={e.value.properties?.bg} width={e.value.properties.width || "8rem"} /></div>
                     }
                 })}
             </div>

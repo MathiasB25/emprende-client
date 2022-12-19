@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import priceFormat from '../../../../hooks/priceFormat';
+import randomId from '../../../../hooks/randomId';
 import { HeadingH2, Product } from '../elements';
 import ProductGridFilterAndSort from './ProductGrid/FilterAndSort';
 
@@ -15,7 +16,7 @@ export default function ProductGridSection({elements}) {
                 {elements.length != 0 ? (
                     <div className='grid grid-cols-4 gap-x-2 gap-y-6 py-8'>
                         {elements.map(e => (
-                            <div className='relative h-full product-hover cursor-pointer'>
+                            <div key={randomId()} className='relative h-full product-hover cursor-pointer'>
                                 <div className='w-full h-full flex flex-col'>
                                     <div className="flex grow items-center justify-center w-full h-full bg-gray-100" style={{aspectRatio: "1/1"}}>
                                         { e.value?.media ? (

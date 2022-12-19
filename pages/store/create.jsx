@@ -20,7 +20,7 @@ const CreateStoreSchema = Yup.object().shape({
       .min(2, 'El nombre de tu tienda no puede tener menos de 2 caracteres')
       .max(50, 'El nombre de tu tienda no puede tener más de 50 caracteres')
       .matches(/(^[a-zA-Z0-9_ ]*$)|(^[^ !"`'#%&,:;<>=@{}~\$\(\)\*\+\/\\\?\[\]\^\|]+$)/, 'El nombre de tu tienda no puede tener simbolos')
-      .required('No puede estar vacío'),
+      .required('No puede estar vacío')
 });
 
 function StoreCreate({ state, actions }) {
@@ -39,14 +39,14 @@ function StoreCreate({ state, actions }) {
     
     return (
         state.myStore.error && (
-            <div className="flex justify-center items-center h-screen emprende-bg-gradient">
-                <div className="bg-white px-10 sm:px-32 md:p-10 py-10 w-full md:w-2/3 lg:w-1/2 2xl:w-1/3 flex gap-20 flex-col justify-between h-full">
+            <div className="flex justify-center items-center h-screen">
+                <div className="md:rounded-md md:shadow-2xl md:bg-white px-10 sm:px-32 md:p-10 py-10 w-full md:w-2/3 lg:w-1/2 2xl:w-1/3 flex gap-20 flex-col justify-between h-full md:h-fit">
                     <div className="w-fit">
                         <Link href="/">
                             <Image src="/img/icon.png" width={150} height={30} alt="Emprende logo" />
                         </Link>
                     </div>
-                    <div className="flex flex-col gap-8">
+                    <div className="flex flex-col gap-12">
                         <div className="text-3xl">Crea tu tienda</div>
                         <Formik 
                             initialValues={{storeName: ''}} 

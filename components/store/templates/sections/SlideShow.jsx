@@ -29,7 +29,7 @@ export default function SlideshowSection({elements, height}) {
             <div className='flex fixed' style={{transform: `translateX(-${page}00vw)`, transition: 'all .8s'}}>
                 {elements.map(e => (
                     <>
-                        <div style={{height: slideShowHeight, width: "100vw"}}>
+                        <div key={randomId()} style={{height: slideShowHeight, width: "100vw"}}>
                             <Image media={e.value.media} content={{ title: "Image slide", description: "Tell your brand's story through images", buttonText: "Button label" }} />
                         </div>
                     </>

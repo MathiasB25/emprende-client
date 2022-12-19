@@ -31,6 +31,7 @@ import {
     Slideshow,
     Video,
 } from '../../../components/store/templates/sections';
+import randomId from '../../../hooks/randomId';
 
 function StorePageIndex({ state, actions }) {
     
@@ -58,6 +59,7 @@ function StorePageIndex({ state, actions }) {
             )}
             {Object.keys(store).length != 0 && pageSections.length != 0 && (
                 <Layout 
+                    href={true}
                     announceBar={store.announceBar}
                     header={{storeName: store.store?.name, pages: store.pages}}
                 >
@@ -65,35 +67,35 @@ function StorePageIndex({ state, actions }) {
                         {pageSections?.map(section => {
                             switch (section.component) {
                                 case "ImageBanner":
-                                    return <ImageBanner elements={section.elements} height={section.style.height} />
+                                    return <ImageBanner key={randomId()} elements={section.elements} height={section.style.height} />
                                 case "RichText":
-                                    return <RichText elements={section.elements} />
+                                    return <RichText key={randomId()} elements={section.elements} />
                                 case "BlogPosts":
-                                    return <BlogPosts elements={section.elements} />
+                                    return <BlogPosts key={randomId()} elements={section.elements} />
                                 case "Collage":
-                                    return <Collage elements={section.elements} />
+                                    return <Collage key={randomId()} elements={section.elements} />
                                 case "CollapsibleContent":
-                                    return <CollapsibleContent elements={section.elements} />
+                                    return <CollapsibleContent key={randomId()} elements={section.elements} />
                                 case "CollectionList":
-                                    return <CollectionList elements={section.elements} />
+                                    return <CollectionList key={randomId()} elements={section.elements} />
                                 case "ContactForm":
-                                    return <ContactForm elements={section.elements} />
+                                    return <ContactForm key={randomId()} elements={section.elements} />
                                 case "EmailSignup":
-                                    return <EmailSignup elements={section.elements} />
+                                    return <EmailSignup key={randomId()} elements={section.elements} />
                                 case "FeaturedCollection":
-                                    return <FeaturedCollection elements={section.elements} />
+                                    return <FeaturedCollection key={randomId()} elements={section.elements} />
                                 case "FeaturedProduct":
-                                    return <FeaturedProduct elements={section.elements} />
+                                    return <FeaturedProduct key={randomId()} elements={section.elements} />
                                 case "ImageWithText":
-                                    return <ImageWithText elements={section.elements} />
+                                    return <ImageWithText key={randomId()} elements={section.elements} />
                                 case "MultiColumn":
-                                    return <MultiColumn elements={section.elements} />
+                                    return <MultiColumn key={randomId()} elements={section.elements} />
                                 case "Slideshow":
-                                    return <Slideshow elements={section.elements} height={section.style.height} />
+                                    return <Slideshow key={randomId()} elements={section.elements} height={section.style.height} />
                                 case "VideoSection":
-                                    return <Video elements={section.elements} />
+                                    return <Video key={randomId()} elements={section.elements} />
                                 case "ProductGrid":
-                                    return <ProductGrid elements={section.elements} />
+                                    return <ProductGrid key={randomId()} elements={section.elements} />
                             }
                         })}
                     </div>

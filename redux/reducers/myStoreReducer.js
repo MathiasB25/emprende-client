@@ -6,6 +6,8 @@ import {
     DELETE_MY_STORE,
     SET_MY_STORE_TEMPLATE,
     SET_MY_STORE_TEMPLATE_SUCCESS,
+    ADD_MY_STORE_TEMPLATE,
+    ADD_MY_STORE_TEMPLATE_SUCCESS,
     MY_STORE_ERROR,
     LOGOUT,
     CREATE_MY_STORE,
@@ -77,6 +79,21 @@ export default function(state = initalState, action) {
                     ...state.template,
                     ...action.payload
                 }
+            }
+        case ADD_MY_STORE_TEMPLATE:
+            return {
+                ...state,
+                loading: true
+            }
+        case ADD_MY_STORE_TEMPLATE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                ownedTemplates: [
+                    ...state.ownedTemplates,
+                    action.payload
+                ]
             }
         case MY_STORE_ERROR: 
             return {

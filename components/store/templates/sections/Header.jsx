@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { LinkElement, HeadingH4 } from '../elements';
+import useAppContext from '../../../../hooks/useAppContext';
+import randomId from '../../../../hooks/randomId';
 
-export default function HeaderSection({elements}) {
+export default function HeaderSection({href, elements}) {
+
+    const { setEditorPage } = useAppContext();
 
     const [ active, setActive ] = useState(false);
 
@@ -14,7 +18,7 @@ export default function HeaderSection({elements}) {
             <div className='flex items-center gap-6'>
                 <div className='mr-4'><HeadingH4 text={heading.value.text} /></div>
                 {links.map(e => (
-                    <div className='hidden sm:block'><LinkElement text={e.value.text} href={e.value.href} size="sm" /></div>
+                    <div key={randomId()} className='hidden sm:block' onClick={() => setEditorPage(e.value.url)}><LinkElement text={e.value.text} href={href ? e.value.href : '#'} size="sm" /></div>
                 ))}
             </div>
             <div className='flex text-xl'>
@@ -30,7 +34,7 @@ export default function HeaderSection({elements}) {
                             <button className='w-10 h-10 text-3xl' onClick={() => setActive(false)}><i className="fa-regular fa-xmark"></i></button>
                         </div>
                         { links.map(e => (
-                            <div className='p-2' onClick={() => setActive(false)}><Link href={e.value.href}>{e.value.text}</Link></div>
+                            <div key={randomId()} className='p-2' onClick={() => setActive(false)}><Link href={e.value.href}>{e.value.text}</Link></div>
                         ))}
                         <button className='text-left p-2 border-t border-zinc-200 mt-5 pt-5'>Buscar</button>
                         <button className='text-left p-2'>Carrito</button>

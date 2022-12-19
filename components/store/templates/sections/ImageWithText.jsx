@@ -1,3 +1,4 @@
+import randomId from '../../../../hooks/randomId';
 import { Image, HeadingH2, Description, BuyButton } from '../elements';
 
 export default function ImageWithTextSection({elements}) {
@@ -14,11 +15,11 @@ export default function ImageWithTextSection({elements}) {
                     { elements.map(e => {
                         switch (e.component) { 
                             case "HeadingH2":
-                                return <HeadingH2 text={e.value.text} size={"3xl"} isStatic={true} />; 
+                                return <HeadingH2 key={randomId()} text={e.value.text} size={"3xl"} isStatic={true} />; 
                             case "Description":
-                                return <Description text={e.value.text} align={"left"}  />; 
+                                return <Description key={randomId()} text={e.value.text} align={"left"}  />; 
                             case "BuyButton":
-                                return <BuyButton text={e.value.text} color={e.value.properties.color} bg={e.value.properties.bg} width={e.value.properties.width} />; 
+                                return <BuyButton key={randomId()} text={e.value.text} color={e.value.properties.color} bg={e.value.properties.bg} width={e.value.properties.width} />; 
                         }
                     })}
                 </div>

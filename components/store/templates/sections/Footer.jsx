@@ -1,7 +1,8 @@
+import randomId from '../../../../hooks/randomId';
 import { FooterMenu, FooterText,  } from '../elements';
 import EmailSignupSection from './EmailSignup';
 
-export default function FooterSection({elements, storeName}) {
+export default function FooterSection({elements, storeName, href}) {
     
     return(
         <div>
@@ -12,9 +13,9 @@ export default function FooterSection({elements, storeName}) {
                             {elements.map(e => {
                                 switch (e.component) {
                                     case "FooterMenu":
-                                        return <FooterMenu heading={e.value.heading} pages={e.value.pages} />
+                                        return <FooterMenu key={randomId()} href={href} heading={e.value.heading} pages={e.value.pages} />
                                     case "FooterText":
-                                        return <FooterText heading={e.value.heading} description={e.value.description} />
+                                        return <FooterText key={randomId()} heading={e.value.heading} description={e.value.description} />
                                 }   
                             })}
                         </div>

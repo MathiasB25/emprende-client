@@ -10,6 +10,8 @@ import {
     UPDATE_MY_STORE_SUCCESS,
     DELETE_MY_STORE,
     MY_STORE_ERROR,
+    ADD_MY_STORE_TEMPLATE,
+    ADD_MY_STORE_TEMPLATE_SUCCESS,
     SET_MY_STORE_TEMPLATE,
     SET_MY_STORE_TEMPLATE_SUCCESS,
     LOGOUT
@@ -29,6 +31,7 @@ export function createMyStore({ name }) {
                 name,
                 config
             })
+            console.log(data)
             dispatch(getMyStoreSuccessAction(data.data))
         } catch (error) {
             dispatch( myStoreErrorAction() )
@@ -79,14 +82,34 @@ export function deleteMyStore() {
     }
 }
 
-export function setTemplate(template, config) {
+export function setTemplate({ template }) {
     return async (dispatch) => {
         dispatch( setTemplateAction() )
 
         try {
-            const {data} = await axios.post('/api/setTemplate', { template: template._id, config });
-            console.log(data)
+            const config = useAxiosConfig();
+            if(config.headers.Authorization.includes('null')) {
+                dispatch( myStoreErrorAction() )
+            }
+            await axios.post('/api/setTemplate', { template, config });
             dispatch(setTemplateSuccessAction(template))
+        } catch (error) {
+            dispatch(myStoreErrorAction())
+        }
+    }
+}
+
+export function addTemplate({ template }) {
+    return async (dispatch) => {
+        dispatch( addTemplateAction() )
+
+        try {
+            const config = useAxiosConfig();
+            if(config.headers.Authorization.includes('null')) {
+                dispatch( myStoreErrorAction() )
+            }
+            await axios.post('/api/AddTemplate', { template, config });
+            dispatch(addTemplateSuccessAction(template))
         } catch (error) {
             dispatch(myStoreErrorAction())
         }
@@ -137,6 +160,8 @@ const myStoreErrorAction = (state) => ({
     type: MY_STORE_ERROR
 })
 
+
+// Set Template
 const setTemplateAction = () => ({
     type: SET_MY_STORE_TEMPLATE
 })
@@ -146,6 +171,17 @@ const setTemplateSuccessAction = (myStore) => ({
     payload: myStore
 })
 
+// Add Template
+const addTemplateAction = () => ({
+    type: ADD_MY_STORE_TEMPLATE
+})
+
+const addTemplateSuccessAction = (template) => ({
+    type: ADD_MY_STORE_TEMPLATE_SUCCESS,
+    payload: template
+})
+
+// LOGOUT
 const logoutAction = () => ({
     type: LOGOUT
 })

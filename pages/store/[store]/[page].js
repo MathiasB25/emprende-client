@@ -58,8 +58,10 @@ function StorePageDynamic({ state, actions }) {
 
         if(pageName === 'catalog' && products.length === 0) {
             (async () => {
-                const collections = await axios.post('/api/getStoreCollections', { url: storeName })
-                setProducts(collections.data.filter( product => product.id === "all" )[0].products);
+                const { data } = await axios.post('/api/getStoreCollections', { url: storeName })
+                if(data.success) {
+                    setProducts(data.filter( product => product.id === "all" )[0].products);
+                }
             }) ();
         }
 
@@ -79,6 +81,7 @@ function StorePageDynamic({ state, actions }) {
             )}
             {store.template && pageSections.length != 0 && (
                 <Layout 
+                    href={true}
                     announceBar={store.announceBar}
                     header={{storeName: store.store.name, pages: store.pages}}
                 >

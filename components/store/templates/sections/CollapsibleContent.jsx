@@ -1,3 +1,4 @@
+import randomId from '../../../../hooks/randomId';
 import { HeadingH2, CollapsibleRow } from '../elements';
 
 export default function CollapsibleContentSection({elements}) {
@@ -14,7 +15,7 @@ export default function CollapsibleContentSection({elements}) {
             )}
             <div className="flex flex-col divide-y border-b border-t">
                 {rows.map(e => (
-                    <CollapsibleRow title={e.value.title} text={e.value.text} />
+                    <CollapsibleRow key={randomId()} title={e.value.title} text={e.value.text} />
                 ))}
             </div>
         </div>
