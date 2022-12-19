@@ -1,9 +1,17 @@
 import Link from "next/link"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+// Hooks
 import useClickOutSide from "../hooks/useClickOutSide"
+// Components
+import NavbarAccount from "./NavbarAccount"
+// Redux
+import { bindActionCreators } from "redux";
+import { connect } from 'react-redux';
+import * as Actions from '../redux/actions'
 
+function Navbar({ state, actions }) {
 
-const Navbar = () => {
+   const auth = state.auth;
 
    const [toggle, setToggle] = useState(false)
    const handleOpenMenu = () =>{
@@ -13,23 +21,33 @@ const Navbar = () => {
    const menu = useRef(null)
    useClickOutSide(menu, setToggle)
 
-  return (
+   return (
     <>
       <div className="relative flex items-center px-10 lg:px-20 shadow-md">
          <div className="w-full flex justify-between">
             <div className="flex">
                <div className="h-20 cursor-pointer inline-flex items-center">
-                     <Link href={'/'}><img className="navbar-logosize" src="/img/icon.png" alt="logo"/></Link>
+                     <Link href={`/`}><img className="navbar-logosize" src="/img/icon.png" alt="logo"/></Link>
                </div>
-               <div className="hidden lg:flex gap-10 items-center flex-row ml-12 text-gray-500 ">
-                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color"> Home </p></Link>
-                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color"> Pages </p></Link>
-                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color"> Components </p></Link>
-                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color"> Documentation </p></Link>
-               </div>
+               {auth.authenticated ? (
+                  <div className="hidden lg:flex gap-10 items-center flex-row ml-12 text-gray-500">
+                     <Link href="/templates"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color transition-colors">Plantillas</p></Link>
+                     <Link href="/plans"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color transition-colors">Planes</p></Link>
+                  </div>
+               ) : (
+                  <div className="hidden lg:flex gap-10 items-center flex-row ml-12 text-gray-500">
+                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color transition-colors">Inicio</p></Link>
+                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color transition-colors">Planes</p></Link>
+                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color transition-colors">Acerca de</p></Link>
+                     <Link href="/"><p className="cursor-pointer font-medium text-sm flex relative items-center hover:text-main-color transition-colors">Contacto</p></Link>
+                  </div>
+               )}
             </div>
             
-            <div className="flex gap-6 items-center">
+            {auth.authenticated ? (
+               <NavbarAccount top={"navbar-account-menu"} />
+            ) : (
+               <div className="flex gap-6 items-center">
                   <div>
                      <button onClick={handleOpenMenu}><i className="text-xl lg:text-base fa-solid fa-magnifying-glass hover:text-main-color"></i></button>
                   </div>
@@ -44,7 +62,8 @@ const Navbar = () => {
                         <Link href="/"><p className="navbar-joinusbuy text-white bg-main-color hover:bg-main-colordark transition-colors">Buy Now</p></Link>
                      </div>
                   </div>
-            </div>
+               </div>
+            )}
          </div>
       </div>
       
@@ -64,7 +83,18 @@ const Navbar = () => {
          </div>
       )}
     </>
-    )
+   )
 }
 
-export default Navbar 
+const mapStateToProps = (state) => ({
+	state: state
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	actions: bindActionCreators(Actions, dispatch)
+})
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Navbar);

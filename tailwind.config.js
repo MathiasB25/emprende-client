@@ -7,6 +7,9 @@ module.exports = {
         'main-color': 'rgb(101,163,13)',
         'main-colordark': 'rgb(86, 137, 12)',
         'main-text': 'rgb(99, 115, 129)', 
+      },
+      fontWeight: {
+        'normal-weight': '300'
       }
     },
   },

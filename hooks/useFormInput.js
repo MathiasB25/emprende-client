@@ -37,7 +37,9 @@ const useFormInput = (element) => {
             if(element && !element?.contains(event.target) && element?.style.backgroundColor != 'rgb(247, 247, 248)') {
                 let div = element;
                 let label = element?.children[0];
-                
+                if(element.tagName == 'INPUT') {
+                    label = element.parentElement.children[0];
+                }
                 if(label.classList[0] != 'label') {
                     label = label.parentElement;
                 }
