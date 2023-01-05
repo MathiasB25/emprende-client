@@ -4,10 +4,8 @@ export default function StoreLayout({ announceBar, header, footer, children, hre
 
     return(
         <>
-            {announceBar.text && (
-                <AnnounceBar elements={[
-                    { value: { text: announceBar?.text, size: announceBar?.size} }
-                ]} />
+            {announceBar.name && (
+                <AnnounceBar elements={announceBar.elements} />
             )}
             <Header href={href} elements={[
                 { component: "HeadingH4", value: { text: header.storeName } },

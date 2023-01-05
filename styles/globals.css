@@ -513,3 +513,35 @@ img {
 .editor-content-height {
     height: calc(100vh - 6rem);
 }
+
+.anim-from-top {
+    animation: animFromTop;
+    animation-duration: .25s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes animFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.anim-opacity {
+    animation: animOpacity;
+    animation-duration: .4s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes animOpacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

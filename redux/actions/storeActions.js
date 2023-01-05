@@ -3,6 +3,7 @@ import axios from 'axios';
 import { 
     GET_STORE, 
     GET_STORE_SUCCESS, 
+    UPDATE_STORE_SECTION,
     STORE_ERROR
 } from '../types';
 
@@ -20,6 +21,12 @@ export function getStore(url) {
     }
 }
 
+export function updateStoreSection(data) {
+    return async (dispatch) => {
+        dispatch(updateStoreSectionAction(data))
+    }
+}
+
 
 
 
@@ -32,6 +39,12 @@ const getStoreAction = () => ({
 const getStoreSuccessAction = (store) => ({
     type: GET_STORE_SUCCESS,
     payload: store
+})
+
+// Update store section
+const updateStoreSectionAction = (data) => ({
+    type: UPDATE_STORE_SECTION,
+    payload: data
 })
 
 // Store ERROR

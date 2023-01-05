@@ -22,8 +22,14 @@ import {
     Video,
 } from '../../../components/store/templates/sections';
 import randomId from "../../../hooks/randomId";
+import { useEffect } from "react";
+import useContext from "../../../hooks/useAppContext";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function EditorContent({ store, pageSections }) {
+
     return (
         <div>
             <StoreLayout

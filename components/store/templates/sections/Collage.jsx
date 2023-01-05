@@ -1,14 +1,30 @@
-import randomId from '../../../../hooks/randomId';
+// React
+import { useEffect } from 'react';
+// Redux
+import { bindActionCreators } from "redux";
+import { connect } from 'react-redux';
+import * as Actions from '../../../../redux/actions';
+// Components
 import { HeadingH4, Collection, Image, Video, Product } from '../elements';
+// Hooks
+import randomId from '../../../../hooks/randomId';
 
-export default function CollageSection({elements}) {
+function CollageSection({state, actions, elements}) {
 
     const heading = elements.filter(e => e.component === "HeadingH4")[0];
     const collageElements = elements.filter(e => e.component !== "HeadingH4");
 
+    useEffect(() => {
+        if(heading.value.text === '' && !heading.modified) {
+            actions.updateStoreSection({ section: { component: "Collage" }, element: heading, value: { text: "Multimedia collage" } });
+        }
+    }, [])
+
     return(
         <div className='flex flex-col gap-8 page-width collage-aspect-ratio'>
-            <div><HeadingH4 text={heading.value.text || "Multimedia collage"} /></div>
+            { heading.value.text && (
+                <div><HeadingH4 text={heading.value.text} /></div>
+            )}
             <div className="collage-grid">
                 {collageElements.map(e => {
                     switch (e.component) {
@@ -26,3 +42,16 @@ export default function CollageSection({elements}) {
         </div>
     )
 }
+
+const mapStateToProps = (state) => ({
+	state: state
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	actions: bindActionCreators(Actions, dispatch)
+})
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(CollageSection);

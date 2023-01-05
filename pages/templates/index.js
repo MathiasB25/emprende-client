@@ -70,7 +70,7 @@ export default function TemplatesIndex() {
                 <div className='fixed top-0 left-0 z-20 w-screen h-screen bg-white px-10 sm:px-20'>
                     <div className='flex justify-between text-3xl py-10'>
                         <div>Filtros</div>
-                        <div className='cursor-pointer' onClick={() => setFilterShow(false)}><i class="fa-regular fa-xmark"></i></div>
+                        <div className='cursor-pointer' onClick={() => setFilterShow(false)}><i className="fa-regular fa-xmark"></i></div>
                     </div>
                     <div className='py-5 border-t border-b'>
                         <div className=''>

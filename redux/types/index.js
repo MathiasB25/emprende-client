@@ -16,6 +16,7 @@
 // STORE
     export const GET_STORE = 'GET_STORE';
     export const GET_STORE_SUCCESS = 'GET_STORE_SUCCESS';
+    export const UPDATE_STORE_SECTION = 'UPDATE_STORE_SECTION';
     export const STORE_ERROR = 'STORE_ERROR';
 
 // STORE PRODUCTS
